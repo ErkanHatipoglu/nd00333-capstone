@@ -21,6 +21,10 @@ from azureml.data.datapath import DataPath
 
 def clean_data(data):
 
+    # Copy data
+    X = data.to_pandas_dataframe()
+    print(X.head())
+
     # Remove rows with missing target, separate target from predictors
     X.dropna(axis=0, subset=['SalePrice'], inplace=True)
     y = X.SalePrice 
@@ -38,17 +42,32 @@ def clean_data(data):
 
     # imputation to null values of these numerical columns need to be 'constant'
     constant_num_cols = ['GarageYrBlt', 'MasVnrArea']
+    print("constant_num_cols")
+    print(constant_num_cols)
+    print
 
     # imputation to null values of these numerical columns need to be 'mean'
     mean_num_cols = list(set(numerical_cols).difference(set(constant_num_cols)))
+    print("mean_num_cols")
+    print(mean_num_cols)
+    print()
 
     # imputation to null values of these categorical columns need to be 'constant'
     constant_categorical_cols = ['Alley', 'MasVnrType', 'BsmtQual', 'BsmtCond','BsmtExposure', 'BsmtFinType1', 'BsmtFinType2', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual', 'GarageCond', 'PoolQC', 'Fence', 'MiscFeature']
+    print("constant_categorical_cols")
+    print(constant_categorical_cols)
+    print()
 
     # imputation to null values of these categorical columns need to be 'most_frequent'
     mf_categorical_cols = list(set(categorical_cols).difference(set(constant_categorical_cols)))
+    print("mf_categorical_cols")
+    print(mf_categorical_cols)
+    print()
 
     my_cols = constant_num_cols + mean_num_cols + constant_categorical_cols + mf_categorical_cols
+    print("my_cols")
+    print(my_cols)
+    print()
 
     # Define transformers
     # Preprocessing for numerical data
@@ -74,23 +93,20 @@ def clean_data(data):
     # Make pipeline
     my_pipeline = Pipeline(steps = [('preprocessor', preprocessor)])
     # fit transform X
-    X = my_pipeline.fit_transform (X, y)
+    X_cleaned = preprocessor.fit_transform (X[my_cols])
     
     
     return X, y
 
-# TODO: Create TabularDataset using TabularDatasetFactory
-# Data is located at:
-# "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+subscription_id = '3d1a56d2-7c81-4118-9790-f85d1acf0c77'
+resource_group = 'aml-quickstarts-136772'
+workspace_name = 'quick-starts-ws-136772'
 
-# https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
-# https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py
+workspace = Workspace(subscription_id, resource_group, workspace_name)
 
-web_path = ['https://github.com/ErkanHatipoglu/nd00333-capstone/tree/master/starter_file/data/train.csv']
-ds = TabularDatasetFactory.from_delimited_files(path=web_path)
+dataset = Dataset.get_by_name(workspace, name='Housing Prices Training Dataset')
 
-
-x, y = clean_data(ds)
+x, y = clean_data(dataset)
 
 # TODO: Split data into train and test sets.
 
