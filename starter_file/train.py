@@ -23,7 +23,9 @@ def clean_data(data):
 
     # Copy data
     X = data.to_pandas_dataframe()
+    X.set_index('Id',inplace=True)
     print(X.head())
+    print()
 
     # Remove rows with missing target, separate target from predictors
     X.dropna(axis=0, subset=['SalePrice'], inplace=True)
@@ -31,6 +33,8 @@ def clean_data(data):
 
     # Remove target and 'Utilities' 
     X.drop(['SalePrice', 'Utilities'], axis=1, inplace=True)
+
+    print(X.shape)
 
     # Select object columns
     categorical_cols = [cname for cname in X.columns if X[cname].dtype == "object"]
@@ -41,7 +45,8 @@ def clean_data(data):
     # Imputation lists
 
     # imputation to null values of these numerical columns need to be 'constant'
-    constant_num_cols = ['GarageYrBlt', 'MasVnrArea']
+    #constant_num_cols = ['GarageYrBlt', 'MasVnrArea']
+    constant_num_cols = ['MasVnrArea']
     print("constant_num_cols")
     print(constant_num_cols)
     print
@@ -84,16 +89,17 @@ def clean_data(data):
 
 
     # Bundle preprocessing for numerical and categorical data
+    #preprocessor = ColumnTransformer(transformers=[
+    #    ('num_mean', numerical_transformer_m, mean_num_cols),
+    #    ('num_constant', numerical_transformer_c, constant_num_cols),
+    #    ('cat_mf', categorical_transformer_mf, mf_categorical_cols),
+    #    ('cat_c', categorical_transformer_c, constant_categorical_cols)])
     preprocessor = ColumnTransformer(transformers=[
         ('num_mean', numerical_transformer_m, mean_num_cols),
-        ('num_constant', numerical_transformer_c, constant_num_cols),
         ('cat_mf', categorical_transformer_mf, mf_categorical_cols),
         ('cat_c', categorical_transformer_c, constant_categorical_cols)])
 
-    # Make pipeline
-    my_pipeline = Pipeline(steps = [('preprocessor', preprocessor)])
-    # fit transform X
-    X_cleaned = preprocessor.fit_transform (X[my_cols])
+    X = preprocessor.fit_transform(X)
     
     
     return X, y
@@ -126,7 +132,7 @@ def main():
     run.log("Learning rate:", np.float(args.lr))
     run.log("Number of Estimators:", np.int(args.est))
 
-    model = GradientBoostingRegressor(learning_rate = args.lr,           n_estimators=args.est).fit(x_train, y_train)
+    model = GradientBoostingRegressor(learning_rate = args.lr, n_estimators=args.est).fit(x_train, y_train)
 
 
     preds = model.predict(x_test)
