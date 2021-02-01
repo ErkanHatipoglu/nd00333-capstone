@@ -45,8 +45,8 @@ def clean_data(data):
     # Imputation lists
 
     # imputation to null values of these numerical columns need to be 'constant'
-    #constant_num_cols = ['GarageYrBlt', 'MasVnrArea']
-    constant_num_cols = ['MasVnrArea']
+    constant_num_cols = ['GarageYrBlt', 'MasVnrArea']
+    #constant_num_cols = ['MasVnrArea']
     print("constant_num_cols")
     print(constant_num_cols)
     print
@@ -104,13 +104,17 @@ def clean_data(data):
     
     return X, y
 
-subscription_id = '3d1a56d2-7c81-4118-9790-f85d1acf0c77'
-resource_group = 'aml-quickstarts-136772'
-workspace_name = 'quick-starts-ws-136772'
+#subscription_id = '3e42d11f-d64d-4173-af9b-12ecaa1030b3'
+#resource_group = 'aml-quickstarts-136879'
+#workspace_name = 'quick-starts-ws-136879'
+#workspace = Workspace(subscription_id, resource_group, workspace_name)
 
-workspace = Workspace(subscription_id, resource_group, workspace_name)
+run = Run.get_context()
 
-dataset = Dataset.get_by_name(workspace, name='Housing Prices Training Dataset')
+
+workspace = run.experiment.workspace
+
+dataset = Dataset.get_by_name(workspace, name='Housing Prices Dataset')
 
 x, y = clean_data(dataset)
 
@@ -118,7 +122,7 @@ x, y = clean_data(dataset)
 
 ### YOUR CODE HERE ###
 x_train, x_test, y_train, y_test = train_test_split(x,y)
-run = Run.get_context()
+#run = Run.get_context()
 
 def main():
     # Add arguments to script
