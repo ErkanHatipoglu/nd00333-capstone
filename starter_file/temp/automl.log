@@ -1,0 +1,30 @@
+2021-02-04 19:47:49.323 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:48:18.646 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:49:51.206 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:50:47.901 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:52:06.352 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:54:13.590 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:55:48.136 - INFO - 5339 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 19:58:18.706 - INFO - 6084 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 20:50:25.816 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetOutput
+2021-02-04 20:50:25.882 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetOutput
+2021-02-04 20:50:25.891 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetChildren
+2021-02-04 20:50:26.664 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetChildren, HowEnded=Success, Duration=772.91[ms]
+2021-02-04 20:50:26.664 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=781.85[ms]
+2021-02-04 20:50:26.674 - INFO - 6084 - azureml.train.automl._model_download_utilities._log_activity:54 - ActivityStarted: DownloadModel
+2021-02-04 20:50:35.839 - INFO - 6084 - azureml.automl.runtime.distributed.utilities.horovod_initialized:58 - Horovod not found in current environment. Distribution via Horovod will be disabled.
+2021-02-04 20:50:38.532 - INFO - 6084 - azureml.automl.runtime.featurization.data_transformer.__init__:184 - Feature sweeping enabled: False
+2021-02-04 20:50:38.532 - INFO - 6084 - azureml.automl.runtime.featurization.data_transformer.__init__:185 - Feature sweeping timeout: 86400
+2021-02-04 20:50:39.804 - INFO - 6084 - azureml.train.automl._model_download_utilities._log_activity:92 - ActivityCompleted: Activity=DownloadModel, HowEnded=Success, Duration=13129.55[ms]
+2021-02-04 20:50:39.804 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=13988.22[ms]
+2021-02-04 21:02:33.283 - INFO - 6084 - azureml.train.automl.automlconfig._start_execution:208 - Submitting remote.
+2021-02-04 22:09:08.350 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetOutput
+2021-02-04 22:09:08.401 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetOutput
+2021-02-04 22:09:08.410 - INFO - 6084 - azureml.train.automl.run._log_activity:54 - ActivityStarted: GetChildren
+2021-02-04 22:09:08.553 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetChildren, HowEnded=Success, Duration=143.21[ms]
+2021-02-04 22:09:08.553 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=152.34[ms]
+2021-02-04 22:09:08.565 - INFO - 6084 - azureml.train.automl._model_download_utilities._log_activity:54 - ActivityStarted: DownloadModel
+2021-02-04 22:09:09.178 - INFO - 6084 - azureml.automl.runtime.featurization.data_transformer.__init__:184 - Feature sweeping enabled: False
+2021-02-04 22:09:09.178 - INFO - 6084 - azureml.automl.runtime.featurization.data_transformer.__init__:185 - Feature sweeping timeout: 86400
+2021-02-04 22:09:09.294 - INFO - 6084 - azureml.train.automl._model_download_utilities._log_activity:92 - ActivityCompleted: Activity=DownloadModel, HowEnded=Success, Duration=729.52[ms]
+2021-02-04 22:09:09.295 - INFO - 6084 - azureml.train.automl.run._log_activity:92 - ActivityCompleted: Activity=GetOutput, HowEnded=Success, Duration=944.79[ms]
