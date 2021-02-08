@@ -20,27 +20,17 @@ def init():
 
 
 # The run() method is called each time a request is made to the scoring API.
-#
+# https://knowledge.udacity.com/questions/442907
 def run(data):
     print("data before")
     print(data)
-    data=NumpyParameterType(np.array([data])))
-    print("data after")
-    print(data)
-    names = [i for i in range(398)]
-    df = pd.DataFrame(data=np.concatenate(data), index=None, columns=names)
-    print("df:")
-    print(df.head)
+    print(type(data))
     try:
-        #data=np.array(data)
-        names = [i for i in range(398)]
-        df = pd.DataFrame(data=data, index=None, columns=names)
-        print("df:")
-        print(df.head)
-
-
+        data = json.loads(data)['data']
+        data = pd.DataFrame.from_dict(data)
+        print(data.head())
         # Use the model object loaded by init().
-        result = model.predict(df)
+        result = model.predict(data)
         print(result)
         # You can return any JSON-serializable object.
         return result.tolist()
