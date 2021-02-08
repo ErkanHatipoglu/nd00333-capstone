@@ -28,12 +28,15 @@ def run(data):
     try:
         data = json.loads(data)['data']
         data = pd.DataFrame.from_dict(data)
+        print("Dataframe: ")
         print(data.head())
         # Use the model object loaded by init().
         result = model.predict(data)
+        print("Result: ")
         print(result)
         # You can return any JSON-serializable object.
         return result.tolist()
+
     except Exception as e:
         result = str(e)
         # return error message back to the client
