@@ -1,5 +1,5 @@
 from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler,OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -8,6 +8,7 @@ from sklearn.pipeline import Pipeline
 import argparse
 import os
 import numpy as np
+import math
 
 import joblib
 from sklearn.model_selection import train_test_split
@@ -18,6 +19,13 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # 
 from azureml.core import Workspace, Dataset
 from azureml.data.datapath import DataPath
+
+def calculate_root_mean_squared_log_error(y_true, y_pred):
+    """Calculate root mean squared error of log(y_true) and log(y_pred)"""
+    if len(y_pred)!=len(y_true): return 'error_mismatch'
+    y_pred_new = [math.log(x+1) for x in y_pred]
+    y_true_new = [math.log(x+1) for x in y_true]
+    return mean_squared_error(y_true_new, y_pred_new, squared=False)
 
 def clean_data(data):
 
@@ -140,9 +148,13 @@ def main():
 
 
     preds = model.predict(x_test)
-    mae = mean_absolute_error(y_test,preds)  
-    
+    # https://gist.github.com/bshishov/5dc237f59f019b26145648e2124ca1c9
+    nrmse = mean_squared_error(y_test, preds, squared=False)/(y_test.max()-y_test.min())
+    mae = mean_absolute_error(y_test,preds)
+    rmsle = calculate_root_mean_squared_log_error(y_test, preds)  
+    run.log("NRMSE", np.float(nrmse))
     run.log("MAE", np.float(mae))
+    run.log("RMSLE", np.float(rmsle))
 
     # https://knowledge.udacity.com/questions/357007
     os.makedirs('outputs', exist_ok=True)
