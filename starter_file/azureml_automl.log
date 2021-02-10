@@ -1,0 +1,729 @@
+2021-02-09 21:42:43.251 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:42:43.251 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:42:43.251 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:42:43.252 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:42:43.253 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:42:43.253 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:42:43.253 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:42:43.253 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:42:43.254 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:42:43.254 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:42:43.255 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:42:43.256 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:42:43.263 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:42:43.265 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:42:43.265 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:42:43.266 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:42:43.269 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:42:43.326 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:42:49.476 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:42:49.477 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:44:39.863 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:44:39.863 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:44:39.863 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:44:39.863 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:44:39.863 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:44:39.864 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:44:39.946 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:44:44.458 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:44:44.458 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:46:50.586 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:46:50.586 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:46:50.587 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:46:50.588 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:46:50.588 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:46:50.588 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:46:50.588 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:46:50.640 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:46:58.321 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:46:58.322 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:47:16.661 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:47:16.662 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:47:16.724 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:47:22.528 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:47:22.528 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:50:55.335 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:50:55.335 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:50:55.336 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:50:55.388 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:51:00.850 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:51:00.850 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:51:44.503 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:51:44.503 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:51:44.504 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:51:44.504 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:51:44.505 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:51:44.505 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:51:44.505 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:51:44.505 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:51:44.506 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:51:44.506 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:51:44.506 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:51:44.507 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:51:44.507 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:51:44.508 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:51:44.508 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:51:44.508 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:51:44.509 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:51:44.561 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:51:48.386 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:51:48.386 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 21:53:15.376 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 21:53:15.376 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 21:53:15.377 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 21:53:15.378 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 21:53:15.378 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 21:53:15.378 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 21:53:15.431 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 21:53:20.491 - CRITICAL - 5232 - azureml.train.automl._azureautomlclient.log_traceback:224 - Type: ExecutionFailure
+Class: ValidationException
+Message: ValidationException:
+	Message: Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{
+    "additional_properties": {
+        "debugInfo": null
+    },
+    "code": "UserError",
+    "severity": 2,
+    "message": "Both custom validation data and NCross validations are specified.",
+    "message_format": "Both custom validation data and NCross validations are specified.",
+    "message_parameters": {},
+    "reference_code": null,
+    "details_uri": "https://aka.ms/AutoMLConfig",
+    "target": "n_cross_validations",
+    "details": [
+        {
+            "additional_properties": {
+                "debugInfo": null
+            },
+            "code": null,
+            "severity": null,
+            "message": "null",
+            "message_format": null,
+            "message_parameters": {},
+            "reference_code": null,
+            "details_uri": null,
+            "target": null,
+            "details": [],
+            "inner_error": null
+        }
+    ],
+    "inner_error": {
+        "additional_properties": {},
+        "code": "BadArgument",
+        "inner_error": {
+            "additional_properties": {},
+            "code": "ArgumentMismatch",
+            "inner_error": {
+                "additional_properties": {},
+                "code": "CustomValidationAndNCrossValidationConflict",
+                "inner_error": null
+            }
+        }
+    }
+}]
+	InnerException: None
+	ErrorResponse 
+{
+    "error": {
+        "code": "UserError",
+        "message": "Failed to execute the requested operation: data/settings validation. Error details: Validation error(s): [{\n    \"additional_properties\": {\n        \"debugInfo\": null\n    },\n    \"code\": \"UserError\",\n    \"severity\": 2,\n    \"message\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_format\": \"Both custom validation data and NCross validations are specified.\",\n    \"message_parameters\": {},\n    \"reference_code\": null,\n    \"details_uri\": \"https://aka.ms/AutoMLConfig\",\n    \"target\": \"n_cross_validations\",\n    \"details\": [\n        {\n            \"additional_properties\": {\n                \"debugInfo\": null\n            },\n            \"code\": null,\n            \"severity\": null,\n            \"message\": \"null\",\n            \"message_format\": null,\n            \"message_parameters\": {},\n            \"reference_code\": null,\n            \"details_uri\": null,\n            \"target\": null,\n            \"details\": [],\n            \"inner_error\": null\n        }\n    ],\n    \"inner_error\": {\n        \"additional_properties\": {},\n        \"code\": \"BadArgument\",\n        \"inner_error\": {\n            \"additional_properties\": {},\n            \"code\": \"ArgumentMismatch\",\n            \"inner_error\": {\n                \"additional_properties\": {},\n                \"code\": \"CustomValidationAndNCrossValidationConflict\",\n                \"inner_error\": null\n            }\n        }\n    }\n}]",
+        "inner_error": {
+            "code": "ExecutionFailure"
+        }
+    }
+}
+Traceback:
+  File "_azureautomlclient.py", line 410, in fit
+    test_data=test_data)
+  File "_azureautomlclient.py", line 424, in _fit_remote
+    validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 487, in _fit_remote_core
+    training_data=training_data, validation_data=validation_data, test_data=test_data)
+  File "_azureautomlclient.py", line 538, in _create_parent_run_for_remote
+    test_data=test_data
+  File "_azureautomlclient.py", line 617, in _create_and_validate_parent_run_dto
+    self._validate_input(parent_run_dto)
+  File "_azureautomlclient.py", line 694, in _validate_input
+    ExecutionFailure, operation_name="data/settings validation", error_details=msg)
+
+ExceptionTarget: Unspecified
+2021-02-09 21:53:20.492 - INFO - 5232 - azureml.train.automl._azureautomlclient._fail_parent_run:847 - No parent run to fail
+2021-02-09 22:01:22.295 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-09 22:01:22.295 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-09 22:01:22.296 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-09 22:01:22.296 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-09 22:01:22.297 - INFO - 5232 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-09 22:01:22.351 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-09 22:01:26.581 - INFO - 5232 - azureml.train.automl._azureautomlclient._validate_input:677 - Validation service found the data has no errors.
+2021-02-09 22:01:26.582 - INFO - 5232 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:542 - Start creating parent run.
+2021-02-09 22:01:27.012 - INFO - 5232 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:562 - [ParentRunID:AutoML_527d4612-2309-48d8-b7c4-596e5f33b408] Remote run using input X and y.
+2021-02-09 22:01:27.338 - INFO - 5232 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:575 - Parent Run ID: AutoML_527d4612-2309-48d8-b7c4-596e5f33b408
+2021-02-09 22:01:27.339 - INFO - 5232 - azureml.train.automl._azureautomlclient._fit_remote_core:503 - Starting a snapshot run (snapshot_id : None)
+2021-02-10 11:59:03.039 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-10 11:59:03.039 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-10 11:59:03.040 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-10 11:59:03.041 - INFO - 11968 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-10 11:59:03.095 - INFO - 11968 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-10 11:59:10.254 - INFO - 11968 - azureml.train.automl._azureautomlclient._validate_input:677 - Validation service found the data has no errors.
+2021-02-10 11:59:10.254 - INFO - 11968 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:542 - Start creating parent run.
+2021-02-10 11:59:11.577 - INFO - 11968 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:562 - [ParentRunID:AutoML_c9535495-d9a8-4660-85ff-766143795835] Remote run using input X and y.
+2021-02-10 11:59:12.476 - INFO - 11968 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:575 - Parent Run ID: AutoML_c9535495-d9a8-4660-85ff-766143795835
+2021-02-10 11:59:12.477 - INFO - 11968 - azureml.train.automl._azureautomlclient._fit_remote_core:503 - Starting a snapshot run (snapshot_id : None)
+2021-02-10 12:33:29.174 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-10 12:33:29.174 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-10 12:33:29.175 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-10 12:33:29.175 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-10 12:33:29.175 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-10 12:33:29.175 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-10 12:33:29.176 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-10 12:33:29.177 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-10 12:33:29.177 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-10 12:33:29.177 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-10 12:33:29.177 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-10 12:33:29.177 - INFO - 18580 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-10 12:33:29.233 - INFO - 18580 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-10 12:33:34.494 - INFO - 18580 - azureml.train.automl._azureautomlclient._validate_input:677 - Validation service found the data has no errors.
+2021-02-10 12:33:34.494 - INFO - 18580 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:542 - Start creating parent run.
+2021-02-10 12:33:34.858 - INFO - 18580 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:562 - [ParentRunID:AutoML_9029166e-8803-485d-b3b0-4a978fdd0ec0] Remote run using input X and y.
+2021-02-10 12:33:35.024 - INFO - 18580 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:575 - Parent Run ID: AutoML_9029166e-8803-485d-b3b0-4a978fdd0ec0
+2021-02-10 12:33:35.025 - INFO - 18580 - azureml.train.automl._azureautomlclient._fit_remote_core:503 - Starting a snapshot run (snapshot_id : None)
+2021-02-10 12:47:54.969 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package azureml-train-automl missing from dependencies file.
+2021-02-10 12:47:54.969 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: azureml-train-automl==1.20.0.*
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package pandas missing from dependencies file.
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: pandas==0.25.1
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package psutil missing from dependencies file.
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: psutil>5.0.0,<6.0.0
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package scikit-learn missing from dependencies file.
+2021-02-10 12:47:54.970 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: scikit-learn==0.22.1
+2021-02-10 12:47:54.971 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package numpy missing from dependencies file.
+2021-02-10 12:47:54.971 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: numpy~=1.18.0
+2021-02-10 12:47:54.971 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package py-xgboost missing from dependencies file.
+2021-02-10 12:47:54.971 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: py-xgboost<=0.90
+2021-02-10 12:47:54.971 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package inference-schema missing from dependencies file.
+2021-02-10 12:47:54.972 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package fbprophet missing from dependencies file.
+2021-02-10 12:47:54.972 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:205 - Using pinned version: fbprophet==0.5
+2021-02-10 12:47:54.972 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:199 - Package setuptools-git missing from dependencies file.
+2021-02-10 12:47:54.972 - INFO - 19151 - azureml.train.automl._azureautomlclient.modify_run_configuration:209 - Using installed version: setuptools-git==1.2
+2021-02-10 12:47:55.022 - INFO - 19151 - azureml.train.automl._azureautomlclient._validate_input:664 - Start data validation.
+2021-02-10 12:48:01.316 - INFO - 19151 - azureml.train.automl._azureautomlclient._validate_input:677 - Validation service found the data has no errors.
+2021-02-10 12:48:01.316 - INFO - 19151 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:542 - Start creating parent run.
+2021-02-10 12:48:02.962 - INFO - 19151 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:562 - [ParentRunID:AutoML_ae9abae5-08fd-4e1f-a793-cf0f6f55d662] Remote run using input X and y.
+2021-02-10 12:48:03.558 - INFO - 19151 - azureml.train.automl._azureautomlclient._create_parent_run_for_remote:575 - Parent Run ID: AutoML_ae9abae5-08fd-4e1f-a793-cf0f6f55d662
+2021-02-10 12:48:03.559 - INFO - 19151 - azureml.train.automl._azureautomlclient._fit_remote_core:503 - Starting a snapshot run (snapshot_id : None)

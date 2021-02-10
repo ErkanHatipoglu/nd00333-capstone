@@ -22,18 +22,18 @@ def init():
 # The run() method is called each time a request is made to the scoring API.
 # https://knowledge.udacity.com/questions/442907
 def run(data):
-    print("data before")
-    print(data)
-    print(type(data))
+    #print("data before")
+    #print(data)
+    #print(type(data))
     try:
         data = json.loads(data)['data']
         data = pd.DataFrame.from_dict(data)
-        print("Dataframe: ")
-        print(data.head())
+        #print("Dataframe: ")
+        #print(data.head())
         # Use the model object loaded by init().
         result = model.predict(data)
-        print("Result: ")
-        print(result)
+        #print("Result: ")
+        #print(result)
         # You can return any JSON-serializable object.
         return result.tolist()
 
