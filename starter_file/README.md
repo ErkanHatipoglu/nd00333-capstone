@@ -20,12 +20,12 @@ My workflow will be as follows:
 - Deploy a web service from the model
 - Test the model endpoint.
 
-## Project Set Up and Installation
+## Project Set-Up and Installation
 
 - Click the green 'Code' button to download the .zip of the files from the GitHub repository,
 - Unzip the starter_files folder,
 - Access the Azure Machine Learning Workspace. If you don't have an Azure account you can create a free account by clicking the green *Try Azure for free* button in [this link](https://azure.microsoft.com/en-us/). **Beware! you may be charged to complete this project depending on your subscription**.
-- Navigate to *Datasets* page.
+- Navigate to the *Datasets* page.
 - Register the training dataset by clicking on *Create Dataset* button and select *From Local Files* option.
 <p style="color:blue;font-size:10px;">Create dataset from local files</p>
 
@@ -61,24 +61,24 @@ My workflow will be as follows:
 ![dataset-5.png](images/setup/dataset-5.png)
 
 - Follow the same steps and register the test dataset. To do this repeat the previous steps as described below. Beware of the name changes marked as bold!:
-    - Click on *Create Dataset* button and select *From Local Files* option.
+    - Click on the *Create Dataset* button and select the *From Local Files* option.
     - Name the dataset as **'Housing Prices Test Dataset'**.
     - Browse to the *'./starter_file/data'* folder in your computer and select **test.csv**.
     - Select *Use headers from the first file* option in the *Column headers*.
     - Find the *GarageYrBlt* feature and change the *Type* field from *String* to *Integer*.
     - Confirm the details and click the blue *Create* button.
 - Navigate to Compute page.
-- Create a new compute instance by clicking new button.
-- Select virtual machine size as *'Standard_DS3_v2'*. Leave everthing as default and click next,
-- Give a name to your compute instance and click *Create* button.
-- Navigate to Notebooks page.
+- Create a new compute instance by clicking the new button.
+- Select virtual machine size as *'Standard_DS3_v2'*. Leave everything as default and click next,
+- Give a name to your compute instance and click the *Create* button.
+- Navigate to the Notebooks page.
 - From the left of the screen create a new folder by clicking the 3 dots next to your user name. Give the name *data* to the folder. 
 
 <p style="color:blue;font-size:10px;">Create data folder</p>
 
 ![setup-2.png](images/setup/setup-2.png)
 
-- From the left of the screen select *Upload files* by clicking the 3 dots next to data folder. Navigate to the *'./starter_file/data'* folder in your local computer and upload *train.csv, test.csv, sample_submission.csv* and *data_description.txt*  files by selecting them so that they can be used if needed. 
+- From the left of the screen select *Upload files* by clicking the 3 dots next to the data folder. Navigate to the *'./starter_file/data'* folder in your local computer and upload *train.csv, test.csv, sample_submission.csv* and *data_description.txt*  files by selecting them so that they can be used if needed. 
 
 <p style="color:blue;font-size:10px;">Upload files to data folder</p>
 
@@ -90,7 +90,7 @@ My workflow will be as follows:
 
 ![setup-4.png](images/setup/setup-4.png)
 
-- click on the *automl.ipynb and hyperparameter_tuning.ipynb* so that they can be opened on the editor.
+- Click on the *automl.ipynb and hyperparameter_tuning.ipynb* so that they can be opened on the editor.
 
 - Run the notebooks by starting from the first cell one by one. 
 
@@ -99,13 +99,13 @@ My workflow will be as follows:
 ### Overview
 I will be using the *[Ames Housing dataset](http://jse.amstat.org/v19n3/decock.pdf)* in this project. The original dataset was first published by Dean De Cock in his paper *[Ames, Iowa: Alternative to the Boston Housing Data as an End of Semester Regression Project](https://www.researchgate.net/publication/267976209_Ames_Iowa_Alternative_to_the_Boston_Housing_Data_as_an_End_of_Semester_Regression_Project) at Journal of Statistics Education (November 2011)*.
 
-The original dataset is used in two different *[Kaggle](https://www.kaggle.com/)* competitions. The first competition  is the *[Housing Prices Competition for Kaggle Learn Users](https://www.kaggle.com/c/home-data-for-ml-course/overview)*, and the second competition is the *[House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)* competition.
+The original dataset is used in two different *[Kaggle](https://www.kaggle.com/)* competitions. The first competition is the *[Housing Prices Competition for Kaggle Learn Users](https://www.kaggle.com/c/home-data-for-ml-course/overview)*, and the second competition is the *[House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)* competition.
 
 These are regression competitions in which competitors try to predict the price of the houses in the **test dataset** using the **training dataset**.
 
-The **training dataset** has 1460 rows and 81 columns (including the *Id* field and the the target column *SalePrice*). The **test dataset**, on the other hand, has 1459 rows and 80 columns (excluding the target column *SalePrice*).
+The **training dataset** has 1460 rows and 81 columns (including the *Id* field and the target column *SalePrice*). The **test dataset**, on the other hand, has 1459 rows and 80 columns (excluding the target column *SalePrice*).
 
-There are 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
+79 explanatory variables are describing (almost) every aspect of residential homes in Ames, Iowa.
 
 For competition purposes, approximately all of the data has been divided into two parts: **training dataset** and **test dataset**. We will be using the **training dataset** for training and the **test dataset** for submission to the competition. We will also send requests to our deployed web service using the test dataset.
 
@@ -144,7 +144,7 @@ A second issue is the number of columns. Because of the indeterministic nature o
 
 ![automl-10.png](images/automl/automl-10.png)
 
-As descibed in [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train), there are several options that we can use to configure our automated machine learning experiment. These parameters are set by instantiating an AutoMLConfig object. Below can be found the descriptions and the reasoning for some important parameters:
+As described in [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train), there are several options that we can use to configure our automated machine learning experiment. These parameters are set by instantiating an AutoMLConfig object. Below can be found the descriptions and the reasoning for some important parameters:
 
 - *experiment_timeout_minutes*: Maximum amount of time in minutes that all iterations combined can take before the experiment terminates. **We do not want our experiment to cost too much.**
 
@@ -160,7 +160,7 @@ As descibed in [Configure automated ML experiments in Python](https://docs.micro
 
 - *enable_early_stopping*: Whether to enable early termination if the score is not improving in the short term. **We do not want our experiment to cost too much.**
 
-- *task*: The type of task to run. For our case it is **regression**.
+- *task*: The type of task to run. For our case, it is **regression**.
 
 - *primary_metric*: The metric that Automated Machine Learning will optimize for model selection. I have chosen *normalized_root_mean_squared_error* as suggested in [this article](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train#primary-metric).
 
@@ -172,7 +172,7 @@ The best model for the AutoML run is a *VotingEnsemble* by the given metrics bel
 - *root_mean_squared_log_error:* 0.11724443714762385
 - *mean_absolute_error:* 14028.03885241191
 
-We can find the best model by different ways after the the experiment finishes.
+We can find the best model in different ways after the experiment finishes.
 
 - By exploring the *RunDetails* widget using the notebook,
 
@@ -186,7 +186,7 @@ We can find the best model by different ways after the the experiment finishes.
 
 ![automl-9.png](images/automl/automl-9.png)
 
-- By exploring​ the *Experiments* tab using the Azure ML Studio,
+- By exploring the *Experiments* tab using the Azure ML Studio,
 
 <p style="color:blue;font-size:10px;">Completed experiment with the best model summary</p>
 
@@ -204,7 +204,7 @@ We can also click on the best performing model and explore the details of that m
 
 ![automl-4.png](images/automl/automl-4.png)
 
-We can explore the model explanation and the metrics we are interested. Other than the primary metric, we are interested with the mean absolute error and the root mean squared log error since these are the metrics used in the competitions given above.
+We can explore the model explanation and the metrics we are interested in. Other than the primary metric, we are interested in the mean absolute error and the root mean squared log error since these are the metrics used in the competitions given above.
 
 <p style="color:blue;font-size:10px;">Model explanation</p>
 
@@ -220,7 +220,7 @@ The metrics of the best-performing model can also be explored in the related run
 
 ![automl-6.png](images/automl/automl-6.png)
 
-We can run new AutoML experiments to improve our model. Because of the indeterministic nature of our model by every new run we get different results.
+We can run new AutoML experiments to improve our model. Because of the indeterministic nature of our model with every new run, we get different results.
 
 We can also make some feature engineering before the preprocessing step or after exploring the feature importance tab.
 
@@ -228,13 +228,13 @@ We can also make some feature engineering before the preprocessing step or after
 
 ![automl-12.png](images/automl/automl-12.png)
 
-Since we already know the estimator for the best performing model (kindly refer to automl.ipynb for more details), we can try to tune the model, add new models to voting regressor or retrain the model without validation set (this may reduce chance of overfitting).
+Since we already know the estimator for the best performing model (kindly refer to automl.ipynb for more details), we can try to tune the model, add new models to the voting regressor or retrain the model without validation set (this may reduce the chance of overfitting).
 
 <p style="color:blue;font-size:10px;">Estimator for the best performing model</p>
 
 ![automl-9.png](images/automl/automl-9.png)
 
-Since the automl model is better than the hyperdrive model, I have used it to create a submission file to the competitions. This file can be found in the data folder as *submission.csv*. My submissions and the results are as follows:
+Since the automl model is better than the hyperdrive model, I have used it to create a submission file for the competitions. This file can be found in the data folder as *submission.csv*. My submissions and the results are as follows:
 
 <p style="color:blue;font-size:10px;">Housing Prices Competition for Kaggle Learn Users - Submission</p>
 
@@ -252,7 +252,7 @@ Since the automl model is better than the hyperdrive model, I have used it to cr
 
 ![kaggle-4.png](images/kaggle/kaggle-4.png)
 
-It seems that I am overfitting the data. I need to improve my model to reduce overfitting. Adding more data to training set and/or making some feature engineering will probably improve the model.
+It seems that I am overfitting the data. I need to improve my model to reduce overfitting. Adding more data to the training set and/or making some feature engineering will probably improve the model.
 
 ## Hyperparameter Tuning
 ## Hyperdrive Configuration
@@ -275,23 +275,23 @@ As can be seen in [Hyperparameter tuning a model with Azure Machine Learning](ht
 - Specify a primary metric to optimize,
 - Specify early termination policy for low-performing runs,
 
-Since learning rate is type float, a continious search space needs to be selected. uniform() returns a value uniformly distributed between low and high which is used for learning rate. The range for the search space (for the learning rate) is between *0.001* and *0.1*. *0.1* is the default value for the learning rate. As explained above there is a trade of between the learning rate and number of estimators. This means that we need to decrease the learning rate to increase the number of estimators. Since I want to increase the number of estimators (explained below), I made the default value to be the maximum of the search space (high) and tried to decrease the learning rate as much as possible by setting the low value to *0.001*.
+Since the learning rate is type float, a continuous search space needs to be selected. uniform() returns a value uniformly distributed between low and high which is used for learning rate. The range for the search space (for the learning rate) is between *0.001* and *0.1*. *0.1* is the default value for the learning rate. As explained above there is a trade-off between the learning rate and the number of estimators. This means that we need to decrease the learning rate to increase the number of estimators. Since I want to increase the number of estimators (explained below), I made the default value to be the maximum of the search space (high) and tried to decrease the learning rate as much as possible by setting the low value to *0.001*.
 
-Since number of estimators is type int, a discrete search space needs to be selected. Discrete hyperparameters are specified as a choice() among discrete values. The range for the search space (for the number of estimators) is between *100* and *500*. *100* is the default value for the number of estimators. As explained above increasing the number of estimators may decrease overfitting. As a result  made the default value to be the minimum of the search space (low) and tried to increase the number of estimators as much as possible by setting the high value to *500*.
+Since the number of estimators is type int, a discrete search space needs to be selected. Discrete hyperparameters are specified as a choice() among discrete values. The range for the search space (for the number of estimators) is between *100* and *500*. *100* is the default value for the number of estimators. As explained above increasing the number of estimators may decrease overfitting. As a result, made the default value be the minimum of the search space (low) and tried to increase the number of estimators as much as possible by setting the high value to *500*.
 
-Random sampling supports discrete and continuous hyperparameters. It supports early termination of low-performance runs. As a result, it will be a good choice for parameter sampling.
+Random sampling supports discrete and continuous hyperparameters. It supports the early termination of low-performance runs. As a result, it will be a good choice for parameter sampling.
 
 For our AutoML experiment, the primary metric is chosen to be **normalized_root_mean_squared_error** as suggested in [this article](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train#primary-metric). Since we have to compare the two models for deployment the same primary metric must be chosen for hyperdrive run. Low values are better for this metric.
 
 We can automatically terminate poorly performing runs with an early termination policy. Early termination improves computational efficiency. Bandit policy is based on slack factor/slack amount and evaluation interval. Bandit terminates runs where the primary metric is not within the specified slack factor/slack amount compared to the best performing run. We can select Bandit policy as an early termination policy for more aggressive savings.
 
-Since the estimator class is deprecated and gives error while calculating mean_squared_error, a ScriptRunConfig object has been used as suggested [here](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py). Also an environment is created to remove the mean_squared_error calculation error.
+Since the estimator class is deprecated and gives an error while calculating mean_squared_error, a ScriptRunConfig object has been used as suggested [here](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py). Also an environment is created to remove the mean_squared_error calculation error.
 
-max_concurrent_runs has been selected as *4*, since the AmlCompute cluster has 4 nodes.
+max_concurrent_runs has been selected as *4* since the AmlCompute cluster has 4 nodes.
 
 max_total_runs has been selected as *40* for more runs.
 
-A training script is needed for training. *train.py* is used as training script and can be found in the starter_files folder of the repository. Sklearn pipelines and transformers are used for preprocessing in the training script since there are missing values in the dataset.
+A training script is needed for training. *train.py* is used as a training script and can be found in the starter_files folder of the repository. Sklearn pipelines and transformers are used for preprocessing in the training script since there are missing values in the dataset.
 
 ### Results
 
@@ -306,7 +306,7 @@ The best model for the Hyperdrive run has the metrics below:
 - *root_mean_squared_log_error:* 0.1279803797267253
 - *mean_absolute_error:* 15671.028999405176
 
-These metrics is worse than the AutoML model. As a result I have used the AutoML model for deployment.
+These metrics are worse than the AutoML model. As a result, I have used the AutoML model for deployment.
 
 We can watch the status of the Hyperdrive run within the notebook.
 
@@ -348,7 +348,7 @@ We can also watch the status of the Hyperdrive run by using the AzureML Studio.
 
 ![hyperdrive-9.png](images/hyperdrive/hyperdrive-9.png)
 
-We can try new hyperdrive runs to improve the model. We already know that our model is overfitting the data (from the Kaggle competitions results). It seems that because of the random sampling we have a small number of estimators value for the best model. Since we are overfitting the data, a higher number of estimators value may decrease overfitting. As a result rerunning the experiment and increasing the number of estimators search space will probably improve the model.
+We can try new hyperdrive runs to improve the model. We already know that our model is overfitting the data (from the Kaggle competitions results). It seems that because of the random sampling we have a small number of estimators value for the best model. Since we are overfitting the data, a higher number of estimators value may decrease overfitting. As a result, rerunning the experiment and increasing the number of estimators search space will probably improve the model.
 
 ## Model Deployment
 
@@ -362,7 +362,7 @@ We can try new hyperdrive runs to improve the model. We already know that our mo
     - *AutoML Model:* 14028.03885241191
     - *Hyperdrive Model:* 15671.028999405176
 
-As can be seen, the AutoML model gives better results. As a result I have deployed the AutoML model as a wev service.
+As can be seen, the AutoML model gives better results. As a result, I have deployed the AutoML model as a web service.
 
 I have registered the best AutoML run for feature uses.
 
@@ -372,11 +372,11 @@ I have registered the best AutoML run for feature uses.
 
 We need an environment to deploy the models. We can both define a custom environment or use an Azure curated environment.
 
-I have first created an Azure curated AutoML environment. Then by using the dependencies of this environment I have generated a *.yml* file. By using this *.yml* file I have created a second environment that I used for deployment. By doing this I have both showed to create a custom environment or use an Azure curated environment. In addition I have fulfilled the project requirements.
+I have first created an Azure curated AutoML environment. Then by using the dependencies of this environment I have generated a *.yml* file. By using this *.yml* file I have created a second environment that I used for deployment. By doing this I have both showed to create a custom environment or use an Azure curated environment. Besides, I have fulfilled the project requirements.
 
 We also need a scoring script (entry) for deployment. This script (score.py) can be found in the starter_files folder of the repository. In this script an init() function that loads the model and a run() function that predicts the requested query must be defined. The input to the run() function is a JSON string.
 
-Finally we need to define a deployment configuration.
+Finally, we need to define a deployment configuration.
 
 <p style="color:blue;font-size:10px;">Model Deployment Code</p>
 
@@ -398,13 +398,13 @@ Finally we need to define a deployment configuration.
 
 ![deploy-5.png](images/deploy/deploy-5.png)
 
-To get a [JSON 200](http://enocean-gateway.eu/images/documents/Documentation/error-codes.html) answer (returned when an application request is successful) from the web service we need to create a JSON string. This string needs to be a dictionary with a key *'data'*. The value of this key is a list of dictionaries. Each inner dictionary has keys of column names and values corresponding to the related item that is being queried. An example Json String for one item (house) is as follows.
+To get a [JSON 200](http://enocean-gateway.eu/images/documents/Documentation/error-codes.html) answer (returned when an application request is successful) from the web service we need to create a JSON string. This string needs to be a dictionary with a key *'data'*. The value of this key is a list of dictionaries. Each inner dictionary has keys of column names and values corresponding to the related item that is being queried. An example JSON String for one item (house) is as follows.
 
 ```
 {"data": [{"0": -0.7877776601303935, "1": 0.40472075580786326, "2": -0.824862038820425, "3": -0.12479112703105394, "4": -0.22231727917043134, "5": 0.5900020843135478, "6": -1.0518023616782892, "7": -0.07341187239855226, "8": -0.7010384200582758, "9": -0.9372116952221238, "10": 1.177698492303729, "11": -0.12402884834943756, "12": -0.7249813707482863, "13": -0.8685999131096809, "14": -0.2597453608736428, "15": 1.8877413397414555, "16": -0.11750960306848886, "17": 0.034213835019685064, "18": 0.07970023247881027, "19": -1.177925864816224, "20": -1.1456169750686023, "21": -0.36519377147345083, "22": -0.34676496051017097, "23": -0.4089140915554155, "24": -0.7687342984741533, "25": 0.34566371578061267, "26": -1.0380498416918418, "27": -0.7881555347992615, "28": -0.07907797829369968, "29": -1.0708264505936433, "30": -0.9354464621967534, "31": 1.6770151821776618, "32": -0.6650718421533498, "33": 0.186221289050153, "34": -0.5834629514310187, "35": 0.0, "36": 0.0, "37": 0.0, "38": 0.0, "39": 1.0, "40": 0.0, "41": 0.0, "42": 0.0, "43": 0.0, "44": 1.0, "45": 0.0, "46": 0.0, "47": 1.0, "48": 0.0, "49": 0.0, "50": 0.0, "51": 0.0, "52": 1.0, "53": 0.0, "54": 0.0, "55": 0.0, "56": 0.0, "57": 0.0, "58": 0.0, "59": 0.0, "60": 1.0, "61": 0.0, "62": 0.0, "63": 0.0, "64": 1.0, "65": 0.0, "66": 0.0, "67": 0.0, "68": 0.0, "69": 0.0, "70": 0.0, "71": 0.0, "72": 0.0, "73": 0.0, "74": 0.0, "75": 0.0, "76": 1.0, "77": 0.0, "78": 0.0, "79": 0.0, "80": 1.0, "81": 0.0, "82": 0.0, "83": 0.0, "84": 0.0, "85": 0.0, "86": 1.0, "87": 0.0, "88": 0.0, "89": 0.0, "90": 0.0, "91": 0.0, "92": 0.0, "93": 0.0, "94": 0.0, "95": 1.0, "96": 0.0, "97": 0.0, "98": 0.0, "99": 0.0, "100": 0.0, "101": 0.0, "102": 1.0, "103": 0.0, "104": 0.0, "105": 0.0, "106": 0.0, "107": 0.0, "108": 0.0, "109": 0.0, "110": 0.0, "111": 1.0, "112": 0.0, "113": 0.0, "114": 0.0, "115": 0.0, "116": 0.0, "117": 0.0, "118": 0.0, "119": 0.0, "120": 0.0, "121": 0.0, "122": 0.0, "123": 0.0, "124": 0.0, "125": 0.0, "126": 0.0, "127": 0.0, "128": 0.0, "129": 0.0, "130": 0.0, "131": 0.0, "132": 0.0, "133": 0.0, "134": 0.0, "135": 0.0, "136": 0.0, "137": 0.0, "138": 0.0, "139": 0.0, "140": 0.0, "141": 0.0, "142": 0.0, "143": 0.0, "144": 0.0, "145": 0.0, "146": 0.0, "147": 0.0, "148": 0.0, "149": 0.0, "150": 0.0, "151": 0.0, "152": 0.0, "153": 0.0, "154": 0.0, "155": 0.0, "156": 0.0, "157": 0.0, "158": 0.0, "159": 0.0, "160": 0.0, "161": 0.0, "162": 0.0, "163": 0.0, "164": 0.0, "165": 0.0, "166": 0.0, "167": 0.0, "168": 0.0, "169": 0.0, "170": 0.0, "171": 0.0, "172": 0.0, "173": 0.0, "174": 0.0, "175": 0.0, "176": 0.0, "177": 0.0, "178": 0.0, "179": 0.0, "180": 0.0, "181": 0.0, "182": 0.0, "183": 0.0, "184": 0.0, "185": 0.0, "186": 0.0, "187": 0.0, "188": 0.0, "189": 0.0, "190": 0.0, "191": 0.0, "192": 0.0, "193": 0.0, "194": 0.0, "195": 0.0, "196": 1.0, "197": 0.0, "198": 0.0, "199": 0.0, "200": 0.0, "201": 0.0, "202": 0.0, "203": 0.0, "204": 0.0, "205": 0.0, "206": 0.0, "207": 0.0, "208": 0.0, "209": 0.0, "210": 0.0, "211": 0.0, "212": 0.0, "213": 0.0, "214": 0.0, "215": 0.0, "216": 0.0, "217": 0.0, "218": 0.0, "219": 0.0, "220": 0.0, "221": 1.0, "222": 0.0, "223": 1.0, "224": 0.0, "225": 0.0, "226": 0.0, "227": 0.0, "228": 0.0, "229": 0.0, "230": 0.0, "231": 0.0, "232": 0.0, "233": 0.0, "234": 0.0, "235": 0.0, "236": 1.0, "237": 1.0, "238": 0.0, "239": 0.0, "240": 0.0, "241": 0.0, "242": 0.0, "243": 0.0, "244": 0.0, "245": 0.0, "246": 1.0, "247": 0.0, "248": 0.0, "249": 0.0, "250": 0.0, "251": 0.0, "252": 0.0, "253": 0.0, "254": 0.0, "255": 0.0, "256": 0.0, "257": 0.0, "258": 0.0, "259": 1.0, "260": 0.0, "261": 0.0, "262": 0.0, "263": 0.0, "264": 1.0, "265": 0.0, "266": 0.0, "267": 1.0, "268": 0.0, "269": 0.0, "270": 0.0, "271": 0.0, "272": 0.0, "273": 1.0, "274": 0.0, "275": 1.0, "276": 0.0, "277": 0.0, "278": 0.0, "279": 1.0, "280": 0.0, "281": 0.0, "282": 0.0, "283": 0.0, "284": 0.0, "285": 0.0, "286": 0.0, "287": 0.0, "288": 0.0, "289": 0.0, "290": 0.0, "291": 0.0, "292": 1.0, "293": 0.0, "294": 0.0, "295": 0.0, "296": 0.0, "297": 0.0, "298": 0.0, "299": 0.0, "300": 0.0, "301": 0.0, "302": 0.0, "303": 0.0, "304": 0.0, "305": 0.0, "306": 0.0, "307": 0.0, "308": 0.0, "309": 1.0, "310": 0.0, "311": 1.0, "312": 0.0, "313": 0.0, "314": 0.0, "315": 0.0, "316": 0.0, "317": 0.0, "318": 0.0, "319": 0.0, "320": 1.0, "321": 0.0, "322": 0.0, "323": 0.0, "324": 0.0, "325": 1.0, "326": 0.0, "327": 0.0, "328": 0.0, "329": 0.0, "330": 0.0, "331": 1.0, "332": 0.0, "333": 0.0, "334": 0.0, "335": 0.0, "336": 1.0, "337": 0.0, "338": 0.0, "339": 0.0, "340": 0.0, "341": 1.0, "342": 0.0, "343": 0.0, "344": 0.0, "345": 0.0, "346": 0.0, "347": 1.0, "348": 0.0, "349": 0.0, "350": 0.0, "351": 0.0, "352": 1.0, "353": 0.0, "354": 0.0, "355": 0.0, "356": 0.0, "357": 0.0, "358": 0.0, "359": 1.0, "360": 0.0, "361": 0.0, "362": 0.0, "363": 1.0, "364": 0.0, "365": 0.0, "366": 0.0, "367": 0.0, "368": 0.0, "369": 0.0, "370": 0.0, "371": 0.0, "372": 1.0, "373": 0.0, "374": 0.0, "375": 0.0, "376": 0.0, "377": 0.0, "378": 1.0, "379": 0.0, "380": 0.0, "381": 0.0, "382": 0.0, "383": 0.0, "384": 1.0, "385": 0.0, "386": 0.0, "387": 0.0, "388": 1.0, "389": 0.0, "390": 0.0, "391": 1.0, "392": 0.0, "393": 0.0, "394": 0.0, "395": 1.0, "396": 0.0, "397": 0.0, "398": 0.0}]}
 
 ```
-As described above, this JSON string is only for the model (automl_model.pkl) which is in the *'./starter_file'* folder of the repository. For every new model (if the project is reproduced) the JSON string will be slightly different because of the variying column numbers. The related cells of the notebook **will handle this automatically**. 
+As described above, this JSON string is only for the model (automl_model.pkl) which is in the *'./starter_file'* folder of the repository. For every new model (if the project is reproduced) the JSON string will be slightly different because of the varying column numbers. The related cells of the notebook **will handle this automatically**. 
 
 The code that handles JSON string for one item is as follows:
 
