@@ -470,13 +470,13 @@ input_data = json.dumps(data)
 
 The response of the web service for the first item in the *test.csv* file is as follows:
 
-<p style="color:blue;font-size:10px;">Application insights link</p>
+<p style="color:blue;font-size:10px;">Response of the web service for one item</p>
 
 ![deploy-6.png](images/deploy/deploy-6.png)
 
 The response of the web service for the first 3 item in the *test.csv* file is as follows:
 
-<p style="color:blue;font-size:10px;">Application insights link</p>
+<p style="color:blue;font-size:10px;">Response of the web service for three items</p>
 
 ![deploy-7.png](images/deploy/deploy-7.png)
 
