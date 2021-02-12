@@ -252,7 +252,12 @@ Since the automl model is better than the hyperdrive model, I have used it to cr
 
 ![kaggle-4.png](images/kaggle/kaggle-4.png)
 
-It seems that I am overfitting the data. I need to improve my model to reduce overfitting. Adding more data to the training set and/or making some feature engineering will probably improve the model.
+The results are as follows:
+
+- MAE (Housing Prices Competition for Kaggle Learn Users): 14058.80470
+- RMSLE (House Prices - Advanced Regression Techniques): 0.12774
+
+The mean absolute error result is similar to the validation result (MAE: 14028.03885) but the root mean squared log result is much higher than the validation result (RMSLE: 0.11724). It seems that I am overfitting the data. I need to improve my model to reduce overfitting. Adding more data to the training set and/or making some feature engineering will probably improve the model.
 
 ## Hyperparameter Tuning
 ## Hyperdrive Configuration
