@@ -488,9 +488,6 @@ The response of the web service for the first 3 item in the *test.csv* file is a
 These values can also be compared to the first 3 items in the *submission.csv* file that is predicted by the model above.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
+[Project Screencast](https://www.youtube.com/watch?v=vO6-I2WSCMA)
 
 Thank you for reading.

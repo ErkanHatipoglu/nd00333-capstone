@@ -1,0 +1,61 @@
+# Introduction
+
+Hi,
+
+This is the Capstone Project for Azure Machine Learning Engineer Nanodegree Program - Udacity
+
+In this project, I have created two models using a selected dataset: one using Automated ML and one customized model whose hyperparameters were tuned using HyperDrive. I have then compared the performance of both the models and deployed the best performing model.
+
+I have already run all the notebooks of the project. Later in this video, I will rerun the necessary parts for demonstration purposes.
+
+But let's see first what I have done in the project.
+
+# Dataset
+
+This is Azure Machine learning studio and these are the datasets I am using in this project. 
+
+I have used Ames Housing dataset in this project. The original dataset was first published by Dean De Cock and is used in two different Kaggle competitions. Those are:
+
+- Housing Prices Competition for Kaggle Learn Users and
+- House Prices - Advanced Regression Techniques
+
+competitions.
+
+The task is to predict house prices of the test dataset that is registered as the Housing Prices Test Dataset. I will train the model with a training dataset that is registered as Housing Prices Dataset. The target is the 'SalePrice' column.
+
+# AutoML
+This is the experiment tab, and these are the experiments I have performed. Let's see the AutoML experiment.
+
+These are the AutoML experiments that run through the automl notebook. I will click on the last completed experiment.
+
+You can see the details of the experiment here. It is already completed and the best model is a voting regressor. 
+
+We can click on the models tab and see all the models that run in this experiment. The best run is at the top. Let's see it.
+
+You can see the primary metric here. We can see the details by clicking the details tab. Status, run id, metrics, etc. We can also see the metrics by clicking the metrics tab.
+
+# Hyperdrive
+
+Let's turn back to experiments to see the hyperdrive experiment.
+
+You see a bunch of canceled runs here. Let's click on the completed run.
+
+This is the details tab. The left part is similar to AutoML but the right part shows hyperdrive configuration. 
+
+We can see the child runs by clicking on this tab. In this view, we can see how our parameters and primary metric changes. 
+
+We can also see the details of the best run by clicking on the top run. Here you can see the metric we are interested in.
+
+Now, Let's go to the notebooks and create a web service.
+
+automl.ipynb Notebook part 1
+
+I have a working web service at the moment. We can send requests to the it. 
+
+In this cell, I will use my model to predict the test set. Pay attention to the first three results. We will see them again.
+
+Let's send the first item in the test set. We need to create a JSON string first. Now we can send it. Here is the result. It is the same as the result above as expected.
+
+Finally, let's send the first 3 items in the test set. Again we need to create a JSON string first. Now we can send it. Here are the results. They are also the same as the result above.
+
+Thank you for listening.
