@@ -492,9 +492,9 @@ These values can also be compared to the first 3 items in the *submission.csv* f
 
 ## References
 - [Azure-Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks)
-- Azure Machine Learning documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
+- [Azure Machine Learning documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
 - [Machine Learning Engineer for Microsoft Azure Course Content](https://www.udacity.com/course/machine-learning-engineer-for-microsoft-azure-nanodegree--nd00333)
 - [nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files](https://github.com/ErkanHatipoglu/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files)
-- (nd00333_AZMLND_C2)[https://github.com/ErkanHatipoglu/nd00333_AZMLND_C2]
+- [nd00333_AZMLND_C2](https://github.com/ErkanHatipoglu/nd00333_AZMLND_C2)
 
 Thank you for reading.
