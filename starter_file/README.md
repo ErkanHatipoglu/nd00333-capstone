@@ -1,8 +1,24 @@
 # Housing Prices
 
+##### Table of Contents  
+- [Project Set-Up and Installation](#setup)
+- [Dataset](#dataset)
+    - [Overview](#overview)
+    - [Task](#task)
+    - [Access](#access)
+- [Automated ML](#automl)
+    - [AutoML Configuration](#automlc)
+    - [Results](#aresults)
+- [Hyperparameter Tuning](#hypert)
+    - [Hyperdrive Configuration](#hyperc)
+    - [Results](#hresults)
+- [Model Deployment](#deploy)
+- [Screen Recording](#record)
+- [References](#references)
+
 This is a Capstone Project for *[Azure Machine Learning Engineer Nanodegree Program - Udacity](https://www.udacity.com/course/machine-learning-engineer-for-microsoft-azure-nanodegree--nd00333)*.
 
-In this project, we will create two models using a selected dataset: one using Automated ML and one customized model whose hyperparameters are tuned using HyperDrive. We will then compare the performance of both the models and deploy the best performing model.
+In this project, we will create two models using a selected dataset: one using Automated ML and one customized model whose hyperparameters are tuned using HyperDrive. We will then compare the performance of both the models and deploy the best-performing model.
 
 Housing prices datasets are perfect matches for starting Machine Learning (ML). They can easily be used to learn tabular data, missing values, imputations, encodings, fit and transform mechanisms, feature engineering, etc. As a result, lots of entry-level books and courses about ML use housing prices datasets in their contents.
 
@@ -20,7 +36,7 @@ My workflow will be as follows:
 - Deploy a web service from the model
 - Test the model endpoint.
 
-## Project Set-Up and Installation
+## Project Set-Up and Installation <a name="setup"/>
 
 - Click the green 'Code' button to download the .zip of the files from the GitHub repository,
 - Unzip the starter_files folder,
@@ -94,9 +110,9 @@ My workflow will be as follows:
 
 - Run the notebooks by starting from the first cell one by one. 
 
-## Dataset
+## Dataset <a name="dataset"/>
 
-### Overview
+### Overview <a name="overview"/>
 I will be using the *[Ames Housing dataset](http://jse.amstat.org/v19n3/decock.pdf)* in this project. The original dataset was first published by Dean De Cock in his paper *[Ames, Iowa: Alternative to the Boston Housing Data as an End of Semester Regression Project](https://www.researchgate.net/publication/267976209_Ames_Iowa_Alternative_to_the_Boston_Housing_Data_as_an_End_of_Semester_Regression_Project) at Journal of Statistics Education (November 2011)*.
 
 The original dataset is used in two different *[Kaggle](https://www.kaggle.com/)* competitions. The first competition is the *[Housing Prices Competition for Kaggle Learn Users](https://www.kaggle.com/c/home-data-for-ml-course/overview)*, and the second competition is the *[House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)* competition.
@@ -109,7 +125,7 @@ The **training dataset** has 1460 rows and 81 columns (including the *Id* field 
 
 For competition purposes, approximately all of the data has been divided into two parts: **training dataset** and **test dataset**. We will be using the **training dataset** for training and the **test dataset** for submission to the competition. We will also send requests to our deployed web service using the test dataset.
 
-### Task
+### Task <a name="task"/>
 As written above this is a regression task. We will try to predict the final price of each home in the test set.
 
 I will not explain all the dataset features since they are too many and beyond the scope of this project. However, the explanations can be found in the *[data_description.txt](https://github.com/ErkanHatipoglu/nd00333-capstone/tree/master/starter_file/data/data_description.txt)* file.
@@ -120,7 +136,7 @@ The target column is *SalePrice*. As mentioned above, this is a regression task 
 
 There are some missing values in the training and test datasets that are being handled by the clean_data functions. There are two clean_data functions. One is in the *automl.ipynb* and the other is in the *train.py* files. These functions are similar with some minor differences. The clean_data function in the *automl.ipynb* file, for example, transforms the test set, so that we can use it later to predict the house prices and submit to the competitions. I use sklearn transformers and pipelines to preprocess the data in the clean_data functions. 
 
-### Access
+### Access <a name="access"/>
 The datasets can be downloaded from Kaggle. To download the necessary files just click on one of the competition links above and select the data tab. You may be required to get a free membership and accept the competition rules.
 
 I have already downloaded the datasets to the data folder. Also, I have downloaded the *sample_submission.csv* and *data_description.txt* files. The *sample_submission.csv* file can be used to create submission files, while the *data_description.txt* file may be handy for data analysis.
@@ -135,7 +151,7 @@ I have loaded these registered datasets as TabularDataset and converted them to 
 
 **Warning: *GarageYrBlt* feature should be changed from *String* to *Integer* while creating both datasets. Otherwise, the clean_data function will crash! Kindly refer to *Project Set-Up and Installation* for details**.
 
-## Automated ML
+## Automated ML <a name="automl"/>
 I need to emphasize an important issue first. As I have stated earlier, I have used sklearn transformers and pipelines to preprocess the data in the clean_data functions. Because of those transformations, the column names of the resultant dataframes are being removed. However, my automl configuration needs the target column name. As a result, I have added numeric column names to the resultant dataframes in the notebook. Nothing to be done while reproducing. 
 
 A second issue is the number of columns. Because of the indeterministic nature of my clean_data functions (there is no random_state parameter in the *train_test_split* function), the number of the columns will differ for every run of the notebook if the kernel is restarted. As a result, anyone reproducing the code will probably see different column numbers than this notebook in the repository. But this will not cause any error except for one cell. This cell is only for demonstration purposes and does not affect the automl run. On the other hand, while reproducing, if you want to run all the cells (by clicking the double arrows as shown in the figure below) you need to delete this cell. The cell is shown below:
@@ -143,6 +159,8 @@ A second issue is the number of columns. Because of the indeterministic nature o
 <p style="color:blue;font-size:10px;">Delete this cell if needed!</p>
 
 ![automl-10.png](images/automl/automl-10.png)
+
+### AutoML Configuration <a name="automlc"/>
 
 As described in [Configure automated ML experiments in Python](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train), there are several options that we can use to configure our automated machine learning experiment. These parameters are set by instantiating an AutoMLConfig object. Below can be found the descriptions and the reasoning for some important parameters:
 
@@ -164,13 +182,152 @@ As described in [Configure automated ML experiments in Python](https://docs.micr
 
 - *primary_metric*: The metric that Automated Machine Learning will optimize for model selection. I have chosen *normalized_root_mean_squared_error* as suggested in [this article](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train#primary-metric).
 
-### Results
+### Results <a name="aresults"/>
 
 The best model for the AutoML run is a *VotingEnsemble* by the given metrics below.
 
 - *normalized_root_mean_squared_error:* 0.029610347347248284
 - *root_mean_squared_log_error:* 0.11724443714762385
 - *mean_absolute_error:* 14028.03885241191
+
+The model is as follows:
+
+```
+datatransformer
+{'enable_dnn': None,
+ 'enable_feature_sweeping': None,
+ 'feature_sweeping_config': None,
+ 'feature_sweeping_timeout': None,
+ 'featurization_config': None,
+ 'force_text_dnn': None,
+ 'is_cross_validation': None,
+ 'is_onnx_compatible': None,
+ 'logger': None,
+ 'observer': None,
+ 'task': None,
+ 'working_dir': None}
+
+prefittedsoftvotingregressor
+{'estimators': [('1',
+                 Pipeline(memory=None,
+         steps=[('maxabsscaler', MaxAbsScaler(copy=True)),
+                ('xgboostregressor',
+                 XGBoostRegressor(base_score=0.5, booster='gbtree',
+                                  colsample_bylevel=1, colsample_bynode=1,
+                                  colsample_bytree=1, gamma=0,
+                                  importance_type='gain', learning_rate=0.1,
+                                  max_delta_step=0, max_depth=3,
+                                  min_child_weight=1, missing=nan,
+                                  n_estimators=100, n_jobs=-1, nthread=None,
+                                  objective='reg:squarederror', random_state=0,
+                                  reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
+                                  seed=None, silent=None, subsample=1,
+                                  tree_method='auto', verbose=-10,
+                                  verbosity=0))],
+         verbose=False)),
+                ('26',
+                 Pipeline(memory=None,
+         steps=[('maxabsscaler', MaxAbsScaler(copy=True)),
+                ('gradientboostingregressor',
+                 GradientBoostingRegressor(alpha=0.9, ccp_alpha=0.0,
+                                           criterion='friedman_mse', init=None,
+                                           learning_rate=0.046415888336127774,
+                                           loss='ls', max_depth=8,
+                                           max_features=0.05,
+                                           max_leaf_nodes=None,
+                                           min_impurity_decrease=0.0,
+                                           min_impurity_split=None,
+                                           min_samples_leaf=0.01091729022778783,
+                                           min_samples_split=0.03708777411774474,
+                                           min_weight_fraction_leaf=0.0,
+                                           n_estimators=200,
+                                           n_iter_no_change=None,
+                                           presort='deprecated',
+                                           random_state=None, subsample=0.25,
+                                           tol=0.0001, validation_fraction=0.1,
+                                           verbose=0, warm_start=False))],
+         verbose=False)),
+                ('32',
+                 Pipeline(memory=None,
+         steps=[('standardscalerwrapper',
+                 <azureml.automl.runtime.shared.model_wrappers.StandardScalerWrapper object at 0x7fbac35b9dd8>),
+                ('gradientboostingregressor',
+                 GradientBoostingRegressor(alpha=0.9, ccp_alpha=0.0,
+                                           criterion='friedman_mse', init=None,
+                                           learning_rate=0.1, loss='ls',
+                                           max_depth=6, max_features=0.3,
+                                           max_leaf_nodes=None,
+                                           min_impurity_decrease=0.0,
+                                           min_impurity_split=None,
+                                           min_samples_leaf=0.0416307426011415,
+                                           min_samples_split=0.04427451843494491,
+                                           min_weight_fraction_leaf=0.0,
+                                           n_estimators=100,
+                                           n_iter_no_change=None,
+                                           presort='deprecated',
+                                           random_state=None,
+                                           subsample=0.44999999999999996,
+                                           tol=0.0001, validation_fraction=0.1,
+                                           verbose=0, warm_start=False))],
+         verbose=False)),
+                ('30',
+                 Pipeline(memory=None,
+         steps=[('pca',
+                 PCA(copy=True, iterated_power='auto',
+                     n_components=0.5047368421052632, random_state=None,
+                     svd_solver='auto', tol=0.0, whiten=False)),
+                ('xgboostregressor',
+                 XGBoostRegressor(base_score=0.5, booster='gbtree',
+                                  colsample_bylevel=1, colsample_bynode=1,
+                                  colsample_bytree=1, eta=0.4, gamma=0,
+                                  importance_type='gain', learning_rate=0.1,
+                                  max_delta_step=0, max_depth=6, max_leaves=7,
+                                  min_child_weight=1, missing=nan,
+                                  n_estimators=600, n_jobs=-1, nthread=None,
+                                  objective='reg:squarederror', random_state=0,
+                                  reg_alpha=0.7291666666666667,
+                                  reg_lambda=0.3125, scale_pos_weight=1,
+                                  seed=None, silent=None, subsample=0.8,
+                                  tree_method='auto', verbose=-10,
+                                  verbosity=0))],
+         verbose=False)),
+                ('8',
+                 Pipeline(memory=None,
+         steps=[('minmaxscaler', MinMaxScaler(copy=True, feature_range=(0, 1))),
+                ('elasticnet',
+                 ElasticNet(alpha=0.001, copy_X=True, fit_intercept=True,
+                            l1_ratio=0.32263157894736844, max_iter=1000,
+                            normalize=False, positive=False, precompute=False,
+                            random_state=None, selection='cyclic', tol=0.0001,
+                            warm_start=False))],
+         verbose=False)),
+                ('19',
+                 Pipeline(memory=None,
+         steps=[('standardscalerwrapper',
+                 <azureml.automl.runtime.shared.model_wrappers.StandardScalerWrapper object at 0x7fbac35d4cf8>),
+                ('decisiontreeregressor',
+                 DecisionTreeRegressor(ccp_alpha=0.0, criterion='friedman_mse',
+                                       max_depth=None, max_features=None,
+                                       max_leaf_nodes=None,
+                                       min_impurity_decrease=0.0,
+                                       min_impurity_split=None,
+                                       min_samples_leaf=0.01877954764413522,
+                                       min_samples_split=0.03708777411774474,
+                                       min_weight_fraction_leaf=0.0,
+                                       presort='deprecated', random_state=None,
+                                       splitter='best'))],
+         verbose=False))],
+ 'weights': [0.2, 0.2, 0.1, 0.2, 0.2, 0.1]}
+```
+
+As can be seen, the model is voting regressor which is composed of 6 prefitted estimators:
+
+- XGBoostRegressor (weight=0.2) with a maxabsscaler pre-transformation,
+- GradientBoostingRegressor (weight=0.2) with a maxabsscaler pre-transformation,
+- GradientBoostingRegressor (weight=0.1) with a standardscaler pre-transformation,
+- XGBoostRegressor (weight=0.2) with a PCA pre-transformation,
+- ElasticNet (weight=0.2) with a minmaxscaler pre-transformation,
+- DecisionTreeRegressor (weight=0.1) with a standardscaler pre-transformation.
 
 We can find the best model in different ways after the experiment finishes.
 
@@ -179,6 +336,24 @@ We can find the best model in different ways after the experiment finishes.
 <p style="color:blue;font-size:10px;">RunDetails widget</p>
 
 ![automl-8.png](images/automl/automl-8.png)
+   
+   If we edit the *automl.ipynb* in a jupyter notebook (by using the *Editors* feature of Azure ML Studio) we can see a more comprehensive *RunDetails* widget.
+   
+<p style="color:blue;font-size:10px;">Editors Feature of Azure ML Studio</p>
+
+![automl-17.png](images/automl/automl-17.png)   
+
+<p style="color:blue;font-size:10px;">RunDetails widget (Jupyter Notebook) - View 1</p>
+
+![automl-14.png](images/automl/automl-14.png)
+
+<p style="color:blue;font-size:10px;">RunDetails widget (Jupyter Notebook) - View 2</p>
+
+![automl-15.png](images/automl/automl-15.png)  
+
+<p style="color:blue;font-size:10px;">RunDetails widget (Jupyter Notebook) - View 3</p>
+
+![automl-16.png](images/automl/automl-16.png)  
 
 - By writing code using the notebook,
 
@@ -198,7 +373,7 @@ The models of the experiment may furtherly be explored by clicking the models ta
 
 ![automl-3.png](images/automl/automl-3.png)
 
-We can also click on the best performing model and explore the details of that model.
+We can also click on the best-performing model and explore the details of that model.
 
 <p style="color:blue;font-size:10px;">Best performing AutoML model</p>
 
@@ -259,10 +434,10 @@ The results are as follows:
 
 The mean absolute error result is similar to the validation result (MAE: 14028.03885) but the root mean squared log result is much higher than the validation result (RMSLE: 0.11724). It seems that I am overfitting the data. I need to improve my model to reduce overfitting. Adding more data to the training set and/or making some feature engineering will probably improve the model.
 
-## Hyperparameter Tuning
-## Hyperdrive Configuration
+## Hyperparameter Tuning <a name="hypert"/>
+### Hyperdrive Configuration <a name="hyperc"/>
 
-I will use [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) from [scikit-learn](https://scikit-learn.org/stable/index.html) library. This is a Gradient Boosting for regression. Despite the *[No free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)*, from my previous experience, I believe that gradient boosting gives good results for this dataset. Detailed explanation for *Gradient Boosting* can be found in this [User Guide](https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting). Some important parameters for GradientBoostingRegressor are:
+I have used [GradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html) from [scikit-learn](https://scikit-learn.org/stable/index.html) library. This is a Gradient Boosting for regression. Despite the *[No free lunch theorem](https://en.wikipedia.org/wiki/No_free_lunch_theorem)*, from my previous experience, I believe that gradient boosting gives good results for this dataset. Detailed explanation for *Gradient Boosting* can be found in this [User Guide](https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting). Some important parameters for GradientBoostingRegressor are:
 
 - learning_rate(float), default=0.1
 
@@ -298,7 +473,7 @@ max_total_runs has been selected as *40* for more runs.
 
 A training script is needed for training. *train.py* is used as a training script and can be found in the starter_files folder of the repository. Sklearn pipelines and transformers are used for preprocessing in the training script since there are missing values in the dataset.
 
-### Results
+### Results <a name="hresults"/>
 
 The best model for the Hyperdrive run has the arguments below:
 
@@ -322,6 +497,10 @@ We can watch the status of the Hyperdrive run within the notebook.
 <p style="color:blue;font-size:10px;">RunDetails Widget</p>
 
 ![hyperdrive-2.png](images/hyperdrive/hyperdrive-2.png)
+
+<p style="color:blue;font-size:10px;">RunDetails Widget (Jupyter Notebook)</p>
+
+![hyperdrive-11.png](images/hyperdrive/hyperdrive-11.png)
 
 <p style="color:blue;font-size:10px;">Best Model</p>
 
@@ -355,7 +534,7 @@ We can also watch the status of the Hyperdrive run by using the AzureML Studio.
 
 We can try new hyperdrive runs to improve the model. We already know that our model is overfitting the data (from the Kaggle competitions results). It seems that because of the random sampling we have a small number of estimators value for the best model. Since we are overfitting the data, a higher number of estimators value may decrease overfitting. As a result, rerunning the experiment and increasing the number of estimators search space will probably improve the model.
 
-## Model Deployment
+## Model Deployment <a name="deploy"/>
 
 - *normalized_root_mean_squared_error*
     - *AutoML Model:* 0.029610347347248284
@@ -403,12 +582,8 @@ Finally, we need to define a deployment configuration.
 
 ![deploy-5.png](images/deploy/deploy-5.png)
 
-To get a [JSON 200](http://enocean-gateway.eu/images/documents/Documentation/error-codes.html) answer (returned when an application request is successful) from the web service we need to create a JSON string. This string needs to be a dictionary with a key *'data'*. The value of this key is a list of dictionaries. Each inner dictionary has keys of column names and values corresponding to the related item that is being queried. An example JSON String for one item (house) is as follows.
+To get a [JSON 200](http://enocean-gateway.eu/images/documents/Documentation/error-codes.html) answer (returned when an application request is successful) from the web service we need to create a JSON string. This string needs to be a dictionary with a key *'data'*. The value of this key is a list of dictionaries. Each inner dictionary has keys of column names and values corresponding to the related item that is being queried. An example JSON String for one item (house) can be found in the *data.json* file.
 
-```
-{"data": [{"0": -0.7877776601303935, "1": 0.40472075580786326, "2": -0.824862038820425, "3": -0.12479112703105394, "4": -0.22231727917043134, "5": 0.5900020843135478, "6": -1.0518023616782892, "7": -0.07341187239855226, "8": -0.7010384200582758, "9": -0.9372116952221238, "10": 1.177698492303729, "11": -0.12402884834943756, "12": -0.7249813707482863, "13": -0.8685999131096809, "14": -0.2597453608736428, "15": 1.8877413397414555, "16": -0.11750960306848886, "17": 0.034213835019685064, "18": 0.07970023247881027, "19": -1.177925864816224, "20": -1.1456169750686023, "21": -0.36519377147345083, "22": -0.34676496051017097, "23": -0.4089140915554155, "24": -0.7687342984741533, "25": 0.34566371578061267, "26": -1.0380498416918418, "27": -0.7881555347992615, "28": -0.07907797829369968, "29": -1.0708264505936433, "30": -0.9354464621967534, "31": 1.6770151821776618, "32": -0.6650718421533498, "33": 0.186221289050153, "34": -0.5834629514310187, "35": 0.0, "36": 0.0, "37": 0.0, "38": 0.0, "39": 1.0, "40": 0.0, "41": 0.0, "42": 0.0, "43": 0.0, "44": 1.0, "45": 0.0, "46": 0.0, "47": 1.0, "48": 0.0, "49": 0.0, "50": 0.0, "51": 0.0, "52": 1.0, "53": 0.0, "54": 0.0, "55": 0.0, "56": 0.0, "57": 0.0, "58": 0.0, "59": 0.0, "60": 1.0, "61": 0.0, "62": 0.0, "63": 0.0, "64": 1.0, "65": 0.0, "66": 0.0, "67": 0.0, "68": 0.0, "69": 0.0, "70": 0.0, "71": 0.0, "72": 0.0, "73": 0.0, "74": 0.0, "75": 0.0, "76": 1.0, "77": 0.0, "78": 0.0, "79": 0.0, "80": 1.0, "81": 0.0, "82": 0.0, "83": 0.0, "84": 0.0, "85": 0.0, "86": 1.0, "87": 0.0, "88": 0.0, "89": 0.0, "90": 0.0, "91": 0.0, "92": 0.0, "93": 0.0, "94": 0.0, "95": 1.0, "96": 0.0, "97": 0.0, "98": 0.0, "99": 0.0, "100": 0.0, "101": 0.0, "102": 1.0, "103": 0.0, "104": 0.0, "105": 0.0, "106": 0.0, "107": 0.0, "108": 0.0, "109": 0.0, "110": 0.0, "111": 1.0, "112": 0.0, "113": 0.0, "114": 0.0, "115": 0.0, "116": 0.0, "117": 0.0, "118": 0.0, "119": 0.0, "120": 0.0, "121": 0.0, "122": 0.0, "123": 0.0, "124": 0.0, "125": 0.0, "126": 0.0, "127": 0.0, "128": 0.0, "129": 0.0, "130": 0.0, "131": 0.0, "132": 0.0, "133": 0.0, "134": 0.0, "135": 0.0, "136": 0.0, "137": 0.0, "138": 0.0, "139": 0.0, "140": 0.0, "141": 0.0, "142": 0.0, "143": 0.0, "144": 0.0, "145": 0.0, "146": 0.0, "147": 0.0, "148": 0.0, "149": 0.0, "150": 0.0, "151": 0.0, "152": 0.0, "153": 0.0, "154": 0.0, "155": 0.0, "156": 0.0, "157": 0.0, "158": 0.0, "159": 0.0, "160": 0.0, "161": 0.0, "162": 0.0, "163": 0.0, "164": 0.0, "165": 0.0, "166": 0.0, "167": 0.0, "168": 0.0, "169": 0.0, "170": 0.0, "171": 0.0, "172": 0.0, "173": 0.0, "174": 0.0, "175": 0.0, "176": 0.0, "177": 0.0, "178": 0.0, "179": 0.0, "180": 0.0, "181": 0.0, "182": 0.0, "183": 0.0, "184": 0.0, "185": 0.0, "186": 0.0, "187": 0.0, "188": 0.0, "189": 0.0, "190": 0.0, "191": 0.0, "192": 0.0, "193": 0.0, "194": 0.0, "195": 0.0, "196": 1.0, "197": 0.0, "198": 0.0, "199": 0.0, "200": 0.0, "201": 0.0, "202": 0.0, "203": 0.0, "204": 0.0, "205": 0.0, "206": 0.0, "207": 0.0, "208": 0.0, "209": 0.0, "210": 0.0, "211": 0.0, "212": 0.0, "213": 0.0, "214": 0.0, "215": 0.0, "216": 0.0, "217": 0.0, "218": 0.0, "219": 0.0, "220": 0.0, "221": 1.0, "222": 0.0, "223": 1.0, "224": 0.0, "225": 0.0, "226": 0.0, "227": 0.0, "228": 0.0, "229": 0.0, "230": 0.0, "231": 0.0, "232": 0.0, "233": 0.0, "234": 0.0, "235": 0.0, "236": 1.0, "237": 1.0, "238": 0.0, "239": 0.0, "240": 0.0, "241": 0.0, "242": 0.0, "243": 0.0, "244": 0.0, "245": 0.0, "246": 1.0, "247": 0.0, "248": 0.0, "249": 0.0, "250": 0.0, "251": 0.0, "252": 0.0, "253": 0.0, "254": 0.0, "255": 0.0, "256": 0.0, "257": 0.0, "258": 0.0, "259": 1.0, "260": 0.0, "261": 0.0, "262": 0.0, "263": 0.0, "264": 1.0, "265": 0.0, "266": 0.0, "267": 1.0, "268": 0.0, "269": 0.0, "270": 0.0, "271": 0.0, "272": 0.0, "273": 1.0, "274": 0.0, "275": 1.0, "276": 0.0, "277": 0.0, "278": 0.0, "279": 1.0, "280": 0.0, "281": 0.0, "282": 0.0, "283": 0.0, "284": 0.0, "285": 0.0, "286": 0.0, "287": 0.0, "288": 0.0, "289": 0.0, "290": 0.0, "291": 0.0, "292": 1.0, "293": 0.0, "294": 0.0, "295": 0.0, "296": 0.0, "297": 0.0, "298": 0.0, "299": 0.0, "300": 0.0, "301": 0.0, "302": 0.0, "303": 0.0, "304": 0.0, "305": 0.0, "306": 0.0, "307": 0.0, "308": 0.0, "309": 1.0, "310": 0.0, "311": 1.0, "312": 0.0, "313": 0.0, "314": 0.0, "315": 0.0, "316": 0.0, "317": 0.0, "318": 0.0, "319": 0.0, "320": 1.0, "321": 0.0, "322": 0.0, "323": 0.0, "324": 0.0, "325": 1.0, "326": 0.0, "327": 0.0, "328": 0.0, "329": 0.0, "330": 0.0, "331": 1.0, "332": 0.0, "333": 0.0, "334": 0.0, "335": 0.0, "336": 1.0, "337": 0.0, "338": 0.0, "339": 0.0, "340": 0.0, "341": 1.0, "342": 0.0, "343": 0.0, "344": 0.0, "345": 0.0, "346": 0.0, "347": 1.0, "348": 0.0, "349": 0.0, "350": 0.0, "351": 0.0, "352": 1.0, "353": 0.0, "354": 0.0, "355": 0.0, "356": 0.0, "357": 0.0, "358": 0.0, "359": 1.0, "360": 0.0, "361": 0.0, "362": 0.0, "363": 1.0, "364": 0.0, "365": 0.0, "366": 0.0, "367": 0.0, "368": 0.0, "369": 0.0, "370": 0.0, "371": 0.0, "372": 1.0, "373": 0.0, "374": 0.0, "375": 0.0, "376": 0.0, "377": 0.0, "378": 1.0, "379": 0.0, "380": 0.0, "381": 0.0, "382": 0.0, "383": 0.0, "384": 1.0, "385": 0.0, "386": 0.0, "387": 0.0, "388": 1.0, "389": 0.0, "390": 0.0, "391": 1.0, "392": 0.0, "393": 0.0, "394": 0.0, "395": 1.0, "396": 0.0, "397": 0.0, "398": 0.0}]}
-
-```
 As described above, this JSON string is only for the model (automl_model.pkl) which is in the *'./starter_file'* folder of the repository. For every new model (if the project is reproduced) the JSON string will be slightly different because of the varying column numbers. The related cells of the notebook **will handle this automatically**. 
 
 The code that handles JSON string for one item is as follows:
@@ -479,22 +654,67 @@ The response of the web service for the first item in the *test.csv* file is as 
 
 ![deploy-6.png](images/deploy/deploy-6.png)
 
+I got this answer by sending a post request as follows:
+
+```
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(service.scoring_uri, input_data, headers=headers)
+
+print(resp.text)
+```
+
 The response of the web service for the first 3 item in the *test.csv* file is as follows:
 
 <p style="color:blue;font-size:10px;">Response of the web service for three items</p>
 
 ![deploy-7.png](images/deploy/deploy-7.png)
 
+I got this answer by the run method of the service object:
+
+```
+# Send the request
+output = service.run(input_data)
+
+print(output)
+```
+
 These values can also be compared to the first 3 items in the *submission.csv* file that is predicted by the model above.
 
-## Screen Recording
+## Future Improvements
+
+As can be seen from the results it is obvious that the model is overfitting the data. As a result, we can either increase the training data or decrease the number of features. 
+
+To increase the training data:
+
+- We can use the model (Voting Regressor described above) and retrain it with the full training data. After that, we can update our service with the new model.
+
+To decrease the number of features:
+
+- We can apply feature engineering to our raw training data in the clean_data function and run new AutoML and Hyperdrive experiments, get the best model, and update our service with the new model. Or,
+- Explore the feature importance tab, select the most important *n* features, and run new AutoML and Hyperdrive experiments with those features, get the best model and update our service with the new model. 
+
+We can also try new AutoML and Hyperdrive experiments (without changing anything) hoping to get a better model. But I don't think that this will increase our model performance as much as required.
+
+Besides the model,
+
+- We can try [scaling](https://docs.microsoft.com/en-us/azure/machine-learning/classic/create-endpoint#scaling) our web service by adding additional endpoints for learning purposes,
+- We can [automatically generate a Swagger schema](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-advanced-entry-script#automatically-generate-a-swagger-schema) using the score.py file by adding *input_schema* and *output_schema*,
+- We can [profile](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-profile-model?pivots=py-sdk) the model to determine resource utilization,
+- We [create a client](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service?tabs=python) for the web service.
+
+## Screen Recording <a name="record"/>
 [Project Screencast](https://www.youtube.com/watch?v=vO6-I2WSCMA)
 
-## References
+## References <a name="references"/>
 - [Azure-Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks)
 - [Azure Machine Learning documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
 - [Machine Learning Engineer for Microsoft Azure Course Content](https://www.udacity.com/course/machine-learning-engineer-for-microsoft-azure-nanodegree--nd00333)
 - [nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files](https://github.com/ErkanHatipoglu/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files)
 - [nd00333_AZMLND_C2](https://github.com/ErkanHatipoglu/nd00333_AZMLND_C2)
+- [Creating table of contents](https://stackoverflow.com/questions/18244417/how-do-i-create-some-kind-of-table-of-content-in-github-wiki)
+- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 Thank you for reading.
