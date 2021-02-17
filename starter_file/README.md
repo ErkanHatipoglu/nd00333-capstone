@@ -41,7 +41,7 @@ My workflow will be as follows:
 - Deploy a web service from the bestmodel
 - Test the model endpoint.
 
-<p style="color:blue;font-size:10px;">Overview of the project</p>
+<p style="color:blue;font-size:10px;">Workflow of the project</p>
 
 ![overview-1.png](images/overview/overview-1.png)
 
