@@ -36,10 +36,14 @@ My workflow will be as follows:
 - Create an auto ml experiment and select the best auto ml run,
 - Create a hyperdrive experiment and select the best hyperdrive run,
 - Compare the runs and select the best run for the project,
-- Make a model from the best run,
-- Create a submission file from the model,
-- Deploy a web service from the model
+- Save and register the best model,
+- Create a submission file from the best model,
+- Deploy a web service from the bestmodel
 - Test the model endpoint.
+
+<p style="color:blue;font-size:10px;">Overview of the project</p>
+
+![overview-1.png](images/overview/overview-1.png)
 
 ## Project Set-Up and Installation <a name="setup"/>
 
@@ -48,6 +52,7 @@ My workflow will be as follows:
 - Access the Azure Machine Learning Workspace. If you don't have an Azure account you can create a free account by clicking the green *Try Azure for free* button in [this link](https://azure.microsoft.com/en-us/). **Beware! you may be charged to complete this project depending on your subscription**.
 - Navigate to the *Datasets* page.
 - Register the training dataset by clicking on *Create Dataset* button and select *From Local Files* option.
+
 <p style="color:blue;font-size:10px;">Create dataset from local files</p>
 
 ![setup-1.png](images/setup/setup-1.png)
