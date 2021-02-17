@@ -1,6 +1,8 @@
 # Housing Prices
 
-##### Table of Contents  
+##### Table of Contents 
+
+- [Overview](#overviews) 
 - [Project Set-Up and Installation](#setup)
 - [Dataset](#dataset)
     - [Overview](#overview)
@@ -15,6 +17,8 @@
 - [Model Deployment](#deploy)
 - [Screen Recording](#record)
 - [References](#references)
+
+## Overview <a name="overviews"/>
 
 This is a Capstone Project for *[Azure Machine Learning Engineer Nanodegree Program - Udacity](https://www.udacity.com/course/machine-learning-engineer-for-microsoft-azure-nanodegree--nd00333)*.
 
