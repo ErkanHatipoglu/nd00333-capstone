@@ -15,6 +15,7 @@
     - [Hyperdrive Configuration](#hyperc)
     - [Results](#hresults)
 - [Model Deployment](#deploy)
+- [Future Improvements](#improvements)
 - [Screen Recording](#record)
 - [References](#references)
 
@@ -687,7 +688,7 @@ print(output)
 
 These values can also be compared to the first 3 items in the *submission.csv* file that is predicted by the model above.
 
-## Future Improvements
+## Future Improvements <a name="improvements"/>
 
 As can be seen from the results it is obvious that the model is overfitting the data. As a result, we can either increase the training data or decrease the number of features. 
 
