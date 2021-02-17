@@ -713,7 +713,7 @@ Besides the model,
 - We can try [scaling](https://docs.microsoft.com/en-us/azure/machine-learning/classic/create-endpoint#scaling) our web service by adding additional endpoints for learning purposes,
 - We can [automatically generate a Swagger schema](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-advanced-entry-script#automatically-generate-a-swagger-schema) using the score.py file by adding *input_schema* and *output_schema*,
 - We can [profile](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-profile-model?pivots=py-sdk) the model to determine resource utilization,
-- We [create a client](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service?tabs=python) for the web service.
+- We can [create a client](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service?tabs=python) for the web service.
 
 ## Screen Recording <a name="record"/>
 [Project Screencast](https://www.youtube.com/watch?v=vO6-I2WSCMA)
