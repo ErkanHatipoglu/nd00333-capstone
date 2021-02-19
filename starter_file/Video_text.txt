@@ -50,12 +50,18 @@ Now, Let's go to the notebooks and create a web service.
 
 automl.ipynb Notebook part 1
 
-I have a working web service at the moment. We can send requests to the it. 
+To deploy a model in Azure, we need 3 things.
 
-In this cell, I will use my model to predict the test set. Pay attention to the first three results. We will see them again.
+- A Registered model,
+- An inference configuration that basically defines the environment used to run the deployed model and the Python code for initializing and running the model,
+- and a deployment configuration that determines where the model is deployed.
 
-Let's send the first item in the test set. We need to create a JSON string first. Now we can send it. Here is the result. It is the same as the result above as expected.
+I have already registered my model, defined a custom environment and a python script, and deployed my model on Azure Container Instances. 
 
-Finally, let's send the first 3 items in the test set. Again we need to create a JSON string first. Now we can send it. Here are the results. They are also the same as the result above.
+I have a working web service at the moment as can be seen from the endpoints section. Let's click on it. You can see its state is healthy. We can send a request to the web service using the automl notebook. 
+
+In this cell, I will use my model to predict the test set and show the prediction for the first item.
+
+Now Let's send the first item to the web service as a post request. We need to create a JSON string first. And here is the result. It is the same as the result above as expected.
 
 Thank you for listening.

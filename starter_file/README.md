@@ -558,19 +558,21 @@ We can try new hyperdrive runs to improve the model. We already know that our mo
 
 As can be seen, the AutoML model gives better results. As a result, I have deployed the AutoML model as a web service.
 
-I have registered the best AutoML run for feature uses.
+To deploy a model in Azure, we first need to register a model. I've already registered my model in the automl notebook.
 
 <p style="color:blue;font-size:10px;">Registered AutoML Model</p>
 
 ![automl-13.png](images/automl/automl-13.png)
 
-We need an environment to deploy the models. We can both define a custom environment or use an Azure curated environment.
+Next we need to create an environment for deployment. This can be a default environment for supported model frameworks, or a custom environment.
 
 I have first created an Azure curated AutoML environment. Then by using the dependencies of this environment I have generated a *.yml* file. By using this *.yml* file I have created a second environment that I used for deployment. By doing this I have both showed to create a custom environment or use an Azure curated environment. Besides, I have fulfilled the project requirements.
 
-We also need a scoring script (entry) for deployment. This script (score.py) can be found in the starter_files folder of the repository. In this script an init() function that loads the model and a run() function that predicts the requested query must be defined. The input to the run() function is a JSON string.
+When using a custom environment, we must also provide Python code (scoring script) for initializing and running our model. This script (score.py) can be found in the starter_files folder of the repository. In this script an init() function that loads the model and a run() function that predicts the requested query must be defined. The input to the run() function is a JSON string.
 
-Finally, we need to define a deployment configuration.
+We need to provide an [InferenceConfig](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) object that references the entry_script (score.py) and the custom environment to Model.deploy(). 
+
+Finally, we need to define a deployment configuration. This will determine where the model is deployed. I have used AciWebservice Class (that represents a machine learning model deployed as a web service endpoint on Azure Container Instances) as deployment configuration.
 
 <p style="color:blue;font-size:10px;">Model Deployment Code</p>
 
@@ -619,12 +621,7 @@ print("My Data: ")
 print(my_data)
 
 # Convert to JSON format
-
-data = {"data":
-        [
-          my_data,
-      ]
-    }
+data = {"data":[my_data,]}
 
 print("Data: ")
 print(data)
@@ -642,6 +639,7 @@ The code that handles JSON string for 3 items is as follows:
 my_list_2 = my_test_values.values.tolist()
 my_list=[my_list_2[0], my_list_2[1], my_list_2[2]]
 test_list=[]
+
 # Create JSON string
 for item in my_list:
     # Create dictionary
@@ -649,9 +647,8 @@ for item in my_list:
     for count in range(len(item)):
         my_data[str(count)]=item[count]
     test_list.append(my_data)
-data = {"data":
-        test_list
-    }
+data = {"data":test_list}
+
 # Convert to JSON string
 input_data = json.dumps(data)
 ```
@@ -716,7 +713,7 @@ Besides the model,
 - We can [create a client](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-consume-web-service?tabs=python) for the web service.
 
 ## Screen Recording <a name="record"/>
-[Project Screencast](https://www.youtube.com/watch?v=vO6-I2WSCMA)
+[Project Screencast](https://youtu.be/Atzxu2HEvXM)
 
 ## References <a name="references"/>
 - [Azure-Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks)
