@@ -1,4 +1,4 @@
-# Housing Prices
+# Kaggle Housing Prices Competititons Using Azure Machine Learning 
 
 ##### Table of Contents 
 
